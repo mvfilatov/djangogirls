@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "djangogirls"
+version = "0.1.0"
+description = ""
+authors = ["mvfilatov <maxim.v.filatov@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.8"
+django = "^5.0"
+mypy = "^1.7.1"
+ruff = "^0.1.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+fix = true
+unsafe-fixes = true
+line-length = 120
+select = ["ALL"]
+exclude = ["src/blog/migrations"]
+ignore = ["I","D", "EM", "FBT", "S101", "FA", "D203", "D213", "FA102", "TRY003", "ANN101", "Q000"]
+cache-dir = "/tmp/ruff-cache"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.isort]
+no-lines-before = ["standard-library", "local-folder"]
+known-third-party = ["Django"]
+known-local-folder = ["whole_app"]
+
+[tool.ruff.extend-per-file-ignores]
+"tests/*.py" = ["ANN401", "S101", "S311"]
